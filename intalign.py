@@ -2,6 +2,7 @@ import requests
 import openai
 import dotenv
 from typing import List
+import json
 
 #MODEL_ID = "gpt-3.5-turbo-0301"
 MODEL_ID = "gpt-4-0613"
@@ -39,3 +40,9 @@ def chat(message: str) -> str:
         .choices[0]
         .message.content
     )
+
+def save_data_set(data_set, file_name):
+
+    #create json file
+    with open(f"{file_name}.json", 'w') as f:
+        json.dump(data_set, f,indent=4)
